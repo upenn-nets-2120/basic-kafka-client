@@ -14,7 +14,7 @@ Go to the Terminal in your Docker container (`docker exec -it nets2120 bash`).  
 2. Go to the bottom of the file and add the line: 
 
 ```
-127.0.0.1  ip-172-31-29-62
+127.0.0.1  ip-172-31-29-52
 ```
 
 Next you can create the tunnel, much as you've done in the past:
