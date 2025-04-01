@@ -14,14 +14,18 @@ Go to the Terminal in your Docker container (`docker exec -it nets2120 bash`).  
 2. Go to the bottom of the file and add the line: 
 
 ```
-127.0.0.1  ip-172-31-29-52
+127.0.0.1  addr
 ```
+
+where `addr` is the name of the Kafka server we give you for the course.
 
 Next you can create the tunnel, much as you've done in the past:
 
 ```
-ssh -i ~/nets2120/nets2120-project.pem -4 -L 9092:ip-172-31-29-52.ec2.internal:9092 ubuntu@ec2-44-203-65-104.compute-1.amazonaws.com
+ssh -i ~/nets2120/nets2120-project.pem -4 -L 9092:addr:9092 ubuntu@tunnel
 ```
+
+where `addr` is the Kafka server and `tunnel` is the tunnel server.
 
 As per prior cases, leave this running. You can exit to log out and shut down the tunnel.
 
