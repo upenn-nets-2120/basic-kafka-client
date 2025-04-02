@@ -1,5 +1,5 @@
 {
-    "groupId": "nets-2120-group-a",
+    "groupId": "nets-2120-test",
     "bootstrapServers": ["localhost:9092"],
     "topic": "Bluesky-Kafka",
     "port": 4567

@@ -8,18 +8,7 @@ From your Project Description you'll know that you'll use a topic for reading Tw
 
 Like many other services, you will need to set up a *tunnel* to talk to Kafka.  First, we'll need to actually make a modification to a file in your Docker container.  This modification will let your Docker container redirect requests that normally would go *inside* Amazon's cloud network to your tunnel.
 
-Go to the Terminal in your Docker container (`docker exec -it nets2120 bash`).  Then:
-
-1. `nano /etc/hosts`
-2. Go to the bottom of the file and add the line: 
-
-```
-127.0.0.1  addr
-```
-
-where `addr` is the name of the Kafka server we give you for the course.
-
-Next you can create the tunnel, much as you've done in the past:
+You can create the tunnel much as you've done in the past:
 
 ```
 ssh -i ~/nets2120/nets2120_tunnel -4 -L 9092:localhost:9092 sshtunnel@ec2-18-218-240-208.us-east-2.compute.amazonaws.com
@@ -34,6 +23,6 @@ As per prior cases, leave this running. You can exit to log out and shut down th
 
 Now you can write code using the Javascript client for Kafka, [KafkaJS](https://kafka.js.org/).  You should look both at how to write a consumer (used for Twitter) and a producer (used for inter-project chat).
 
-We've provided a sample [app.js](app.js) and [package.json](package.json) that you should be able to use via `npm install` and `npm run start`.  These use configuration info from `config.json`; you might want to adapt them to your purposes.
+We've provided a sample [app.js](app.js) and [package.json](package.json) that you should be able to use via `npm install` and `npm run start`.  These use configuration info from `config.json`; you might want to adapt them to your purposes.  Note that you should uniquely name your groupId or else you likely won't see any new messages.
 
 

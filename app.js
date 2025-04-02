@@ -2,10 +2,19 @@
 // NETS 2120 Sample Kafka Client
 ///////////////
 
-const express = require('express');
-const { Kafka } = require('kafkajs');
+import express from 'express';
+import pkg from 'kafkajs';
+const { Kafka, CompressionTypes, CompressionCodecs } = pkg;
+import SnappyCodec from 'kafkajs-snappy';
 
-var config = require('./config.json');
+// Add snappy codec to the CompressionCodecs.
+CompressionCodecs[CompressionTypes.Snappy] = SnappyCodec;
+
+import fs from 'fs';
+const configFile = fs.readFileSync('config.json', 'utf8');
+import dotenv from 'dotenv';
+dotenv.config();
+const config = JSON.parse(configFile);
 
 const app = express();
 const kafka = new Kafka({
@@ -27,7 +36,8 @@ const run = async () => {
     // Consuming
     await consumer.connect();
     console.log(`Following topic ${config.topic}`);
-    await consumer.subscribe({ topic: config.topic, fromBeginning: true });
+    await consumer.subscribe({ topic: config.topic, fromBeginning: true,
+        compression: CompressionTypes.Snappy });
 
     await consumer.run({
         eachMessage: async ({ topic, partition, message }) => {
