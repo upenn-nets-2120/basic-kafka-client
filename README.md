@@ -22,10 +22,10 @@ where `addr` is the name of the Kafka server we give you for the course.
 Next you can create the tunnel, much as you've done in the past:
 
 ```
-ssh -i ~/nets2120/nets2120-project.pem -4 -L 9092:addr:9092 ubuntu@tunnel
+ssh -i ~/nets2120/nets2120_tunnel -4 -L 9092:localhost:9092 sshtunnel@ec2-18-218-240-208.us-east-2.compute.amazonaws.com
 ```
 
-where `addr` is the Kafka server and `tunnel` is the tunnel server.
+where we provide `nets2120_tunnel` on Ed.
 
 As per prior cases, leave this running. You can exit to log out and shut down the tunnel.
 
