@@ -8,13 +8,18 @@ From your Project Description you'll know that you'll use a topic for reading Tw
 
 Like many other services, you will need to set up a *tunnel* to talk to Kafka.  First, we'll need to actually make a modification to a file in your Docker container.  This modification will let your Docker container redirect requests that normally would go *inside* Amazon's cloud network to your tunnel.
 
-Go to the Terminal in your Docker container (`docker exec -it nets2120 bash`).  Then:
+Go to the Terminal in your Docker container via VSCode.  Then open a terminal.
+
+```bash
+nvm use 22.13.1
+npm install
+```
 
 1. `nano /etc/hosts`
 2. Go to the bottom of the file and add the line: 
 
 ```
-127.0.0.1  addr
+127.0.0.1  ip-172-31-20-171
 ```
 
 where `addr` is the name of the Kafka server we give you for the course.
